@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817232543) do
+ActiveRecord::Schema.define(version: 20160821172020) do
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer  "book_id"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20160817232543) do
     t.date     "pub"
     t.text     "description"
     t.integer  "pages"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "cover"
+    t.boolean  "series",       default: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -98,6 +100,8 @@ ActiveRecord::Schema.define(version: 20160817232543) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
