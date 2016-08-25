@@ -1,15 +1,23 @@
 class FavoritesController < ApplicationController
+  # before_action :authenticate_user!
 
   def index
-    render 'index'
+    @favorites = current_user.favorites
+    render "index.html.erb"
   end
 
   def create
-    render 'index'
+    @favorite = Favorite.create(
+    book_id: params[:book_id],
+    user_id: current_user.id
+    )
+    redirect_to "/favorites"
   end
 
   def destroy
-    render 'destroy'
+    @favorite = Favorite.find_by(id: params[:id])
+    @favorite.destroy
+    redirect_to "/books"
   end
 
 end

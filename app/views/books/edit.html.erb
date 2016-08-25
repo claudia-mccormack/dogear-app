@@ -1,0 +1,22 @@
+<h1>New Book</h1>
+ <%= form_tag("/books", method: "post") do %>
+   <p>  <%= label_tag(:title, "Title:") %>
+        <%= text_field_tag(:title, @book.title) %></p>
+   <p>  <%= label_tag(:author_first, "Author's first name:") %>
+        <%= text_field_tag(:author_first, @book.author_first) %></p>
+   <p>  <%= label_tag(:author_last, "Author's last name:") %>
+        <%= text_field_tag(:author_last, @book.author_last) %></p>
+   <p>  <%= label_tag(:isbn, "ISBN-10:") %>
+        <%= text_field_tag(:isbn, @book.isbn) %></p>
+   <p>  <%= label_tag(:pages, "Pages:") %>
+        <%= text_field_tag(:pages, @book.pages) %></p>
+   <p>  <%= label_tag(:pub, "Year Published:") %>
+        <%= text_field_tag(:pub, @book.pub) %></p>
+   <p>  <%= label_tag(:cover, "Cover Image Link:") %>
+        <%= text_field_tag(:cover, @book.cover) %></p>
+   <p>  <%= label_tag(:description, "Description:") %>
+        <%= text_field_tag(:description, @book.description) %></p>
+   <p>  <%= label_tag(:series, "Part of Series?") %>
+        <%= text_field_tag(:series,@book.series) %></p>
+        <%= submit_tag("Submit") %>
+ <% end %>

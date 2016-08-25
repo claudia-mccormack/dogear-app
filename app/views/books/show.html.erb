@@ -1,0 +1,17 @@
+<h1><%= @book.title %></h1>
+<b><%= @book.author_first %> <%= @book.author_last %></b>
+<p><%= @book.isbn %></p>
+<p><%= @book.description %></p>
+<p>Published in <%= @book.pub %></p>
+<p><%= @book.pages %> pages</p>
+<% @book.subjects.each do |subject| %>
+<%= subject.name %>,
+<% end %>
+<br>
+<%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %>
+<br>
+</a><img src="@book.cover" alt=""><br>
+<%= link_to "Edit Book", "/books/#{@book.id}/edit" %>
+<br>
+<%= link_to "Delete Book", "/books/#{@book.id}", method: "delete" %>
+<br><br>
