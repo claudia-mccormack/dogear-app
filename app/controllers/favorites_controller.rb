@@ -15,8 +15,9 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find_by(id: params[:id])
-    @favorite.destroy
+    @favorite = Favorite.delete(
+    id: params[:id]
+    )
     redirect_to "/books"
   end
 
