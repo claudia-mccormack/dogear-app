@@ -1,13 +1,16 @@
 class GoalsController < ApplicationController
 
   def index
-    @all_goals = Goal.find_by(
+    @my_goals = Goal.find_by(
     user_id: current_user.id
     )
     render 'index'
   end
 
   def show
+    @goal = Goal.find_by(
+    user_id: current_user.id, 
+    )
     render 'show'
   end
 

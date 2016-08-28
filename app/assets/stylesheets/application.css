@@ -1,4 +1,7 @@
 /*
+ *= require font-awesome
+ */
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -10,6 +13,36 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
+ *= require theme/docs
+ *= require theme/jednotka_blue
+ *= require theme/jednotka_green
+ *= require theme/jednotka_mint
+ *= require theme/jednotka_orange
+ *= require theme/jednotka_red
+ *= require theme/jednotka_salmon
+ *= require theme/jednotka_yellow
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
+ *= require theme/docs
+ *= require theme/jednotka_blue
+ *= require theme/jednotka_green
+ *= require theme/jednotka_mint
+ *= require theme/jednotka_orange
+ *= require theme/jednotka_red
+ *= require theme/jednotka_salmon
+ *= require theme/jednotka_yellow
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
+ *= require theme/bootstrap.min
+ *= require theme/bootstrap_01.min
  *= require_tree .
  *= require_self
  */
