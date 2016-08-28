@@ -32,6 +32,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'rspec', '~> 3.5'
+gem 'pry-nav', '~> 0.2.4'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

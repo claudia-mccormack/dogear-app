@@ -4,6 +4,14 @@
     <li><%= favorite.book.title %></li>
     <li><a href="/books/<%= favorite.book.id %>"><img src="<%= favorite.book.cover %>" alt=""></a></li>
       <br>
-    
+      <% if favorite.finished == false %>
+    <%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
+      <% end %>
+      <br>
+    <%= link_to "Remove from Favorites", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "delete" %>
+      <br>
+      <br>
   <% end %>
 </ul>
+
+<%= link_to "View All Books", "/" %>

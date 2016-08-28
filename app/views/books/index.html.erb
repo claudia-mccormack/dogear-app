@@ -6,6 +6,8 @@
   <li><%= book.author_first %> <%= book.author_last %></li>
   <a href="/books/<%= book.id %>"><img src="<%= book.cover %>" alt=""></a>
   <br>
+  <%= link_to "Add To Favorites", "/favorites?book_id=#{book.id}", method: "post" %>
+  <br>
 <% end %>
 
 </ul>
