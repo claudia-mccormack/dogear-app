@@ -1,17 +1,17 @@
 <h1>Your Favorites:</h1>
-<ul>
+<div class="row-favorites-index">
   <% @favorites.each do |favorite| %>
-    <li><%= favorite.book.title %></li>
-    <li><a href="/books/<%= favorite.book.id %>"><img src="<%= favorite.book.cover %>" alt=""></a></li>
-      <br>
+  <div class="col-md-4 well">
+    <%= favorite.book.title %> <br>
+    <a href="/books/<%= favorite.book.id %>"><img src="<%= favorite.book.cover %>" alt=""></a><br>
+
       <% if favorite.finished == false %>
     <%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
-      <% end %>
-      <br>
+      <% end %> <br>
     <%= link_to "Remove from Favorites", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "delete" %>
-      <br>
-      <br>
+
+    </div>
   <% end %>
-</ul>
+</div>
 
 <%= link_to "View All Books", "/" %>

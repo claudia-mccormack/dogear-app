@@ -6,12 +6,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="container">
 
-  <% if current_user %>
-    <h3><%= link_to "View Your Favorites", "/favorites" %></h3>
-  <% end %>
+
 <%= yield %>
+<% if current_user %>
+  <h3><%= link_to "View Your Favorites", "/favorites" %></h3>
+<% end %>
   <% if current_user %>
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>

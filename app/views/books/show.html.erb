@@ -1,5 +1,6 @@
 <h1><%= @book.title %></h1>
-<b><%= @book.author_first %> <%= @book.author_last %></b>
+<b><%= @book.author_first %> <%= @book.author_last %></b><br>
+<img src="<%= @book.cover %>" alt=""><br>
 <p><%= @book.isbn %></p>
 <p><%= @book.description %></p>
 <p>Published in <%= @book.pub %></p>
@@ -10,7 +11,7 @@
 <br>
 <%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %>
 <br>
-</a><img src="@book.cover" alt=""><br>
+</a>
 <%= link_to "Edit Book", "/books/#{@book.id}/edit" %>
 <br>
 <%= link_to "Delete Book", "/books/#{@book.id}", method: "delete" %>

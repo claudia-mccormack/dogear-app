@@ -1,6 +1,8 @@
+
+
 <h1>My Reading Goals:</h1>
 
-<% @my_goals.each do |goal| %>
+<% @goals.each do |goal| %>
   <ul>
     <li><%= link_to "Goal", "/goals/#{goal.id}" %></li>
   </ul>

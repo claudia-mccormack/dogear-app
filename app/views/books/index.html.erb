@@ -1,15 +1,11 @@
-
-
-<h1>All Books:</h1>
-
-<ul>
-<% @all_books.each do |book| %>
-  <li><%= book.title %></li>
-  <li><%= book.author_first %> <%= book.author_last %></li>
-  <a href="/books/<%= book.id %>"><img src="<%= book.cover %>" alt=""></a>
-  <br>
-  <%= link_to "Add To Favorites", "/favorites?book_id=#{book.id}", method: "post" %>
-  <br>
-<% end %>
-
-</ul>
+<div class="row books-index">
+  <% @all_books.each do |book| %>
+      <a href="/books/<%= book.id %>">
+      <div class="col-md-4 well">
+      <img src="<%= book.cover %>">
+      <h3 class="title"><%= book.title %></h3>
+      <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
+    </a>
+  </div>
+  <% end %>
+</div>
