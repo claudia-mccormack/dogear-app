@@ -1,3 +1,25 @@
-<h1>Set a Reading Goal!</h1>
+<div id="main-content-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
 
-<h3>I want to read <%=  %></h3>
+        <h1 class="title">
+          Set A New Reading Goal 
+          <small><!-- optional subtitle --></small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <%= form_tag("/goals", method: "post") do %>
+        <%= label_tag(:num_books, "I want to read ") %>
+        <%= text_field_tag(:num_books, "how many?")%>
+        <%= label_tag(:months, " books in ")%>
+        <%= text_field_tag(:months, "months") %>
+      <%= submit_tag("Set Goal") %>
+    <% end %>  </div>
+</div>

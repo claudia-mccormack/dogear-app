@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821173047) do
+ActiveRecord::Schema.define(version: 20160903193912) do
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer  "book_id"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20160821173047) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "goal_books", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "goals", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "num_books"
@@ -54,6 +61,8 @@ ActiveRecord::Schema.define(version: 20160821173047) do
     t.integer  "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "book_id"
+    t.date     "finish_by"
   end
 
   create_table "models", force: :cascade do |t|

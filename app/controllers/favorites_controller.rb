@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   require 'pry'
   def index
     @favorites = current_user.favorites

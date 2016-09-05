@@ -30,8 +30,7 @@ gem "sprockets", "~> 2.11.0"
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # gem "font-awesome-rails"
 # gem 'thematic'
-# gem "compass-rails"
-
+gem "compass-rails"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

@@ -1,9 +1,45 @@
+<div id="main-content-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <h1 class="title">
+          My Reading Goals
 
 
-<h1>My Reading Goals:</h1>
+        </div>
 
-<% @goals.each do |goal| %>
-  <ul>
-    <li><%= link_to "Goal", "/goals/#{goal.id}" %></li>
-  </ul>
-<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <button><a href="/goals/new">New Goal</a></button>
+
+    <% @goals.each do |goal| %>
+      <% if goal.months != nil %>
+        <p>Read <%= goal.num_books %> books in <%= goal.months %> months.</p>
+      <% elsif goal.years != nil %>
+        <p>Read <%= goal.num_books %> books in <%= goal.years %> year.</p>
+      <% end %>
+    <% end %>
+
+    <div class="row portfolio-boxes">
+      <h2 class="title">Achivements</h2>
+      <h3>Books I've Finished:</h3>
+      <% @favorites.each do |favorite| %>
+        <div class="col-md-3 portfolio-box portfolio-item">
+          <a href="/books/<%= favorite.book.id %>">
+           <div class="image-link">
+            <img src="<%= favorite.book.cover %>">
+           </div>
+              <h4 class="title"><%= favorite.book.title %></h4>
+            </a>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

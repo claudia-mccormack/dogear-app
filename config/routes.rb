@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/books/:id/edit' => 'books#edit'
   patch '/books/:id' => 'books#update'
   delete '/books/:id' => 'books#destroy'
+  get '/search' => 'books#search'
 
   get '/favorites' => 'favorites#index'
   post '/favorites' => 'favorites#create'
@@ -15,7 +16,6 @@ Rails.application.routes.draw do
   delete '/favorites' => 'favorites#destroy'
 
   get '/goals' => 'goals#index'
-  get '/goals/:id' => 'goals#show'
   get '/goals/new' => 'goals#new'
   post '/goals' => 'goals#create'
   patch '/goals/:id' => 'goals#update'
