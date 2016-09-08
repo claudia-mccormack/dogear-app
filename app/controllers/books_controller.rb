@@ -6,6 +6,7 @@ class BooksController < ApplicationController
 
   def search
     @all_books = Book.all
+    @subjects = Subject.all
     render 'search'
   end
 

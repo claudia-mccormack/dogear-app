@@ -7,12 +7,11 @@ class FavoritesController < ApplicationController
   end
 
   def finished
-    # binding.pry
     @favorite = Favorite.find_by(
       book_id: params[:book_id],
       user_id: current_user.id
     )
-    @favorite.update!(
+    @favorite.update(
       finished: true
     )
     redirect_to "/"
@@ -23,7 +22,14 @@ class FavoritesController < ApplicationController
       book_id: params[:book_id],
       user_id: current_user.id
     )
-    redirect_to "/favorites"
+    if @favorite.valid?
+      @favorite.save
+      redirect_to "/favorites"
+      flash[:success] = "Added to Favorites!"
+    else
+      flash[:info] = "Looks like that books is already in your Favorites!"
+      redirect_to "/"
+    end
   end
 
   def destroy

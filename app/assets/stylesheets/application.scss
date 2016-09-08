@@ -5,4 +5,7 @@
 //$contrast: #01a9e0;
 //@import "jednotka/jednotka";
 
-// *= require bootstrap-datepicker3
+// *= require bootstrap-datepicker
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

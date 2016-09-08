@@ -21,19 +21,15 @@
           <span class="icon-bar"></span>
         </button>
 
-
-
         <a class="navbar-brand" href="/">
         <h1 class="text-contrast"><b>DogEar</b></h1>
           <!-- <img alt="..." width="..." height="..." src="..."> -->
-
         </a>
       </div>
 
       <!-- navigation -->
       <div class="collapse navbar-collapse navbar-header-collapse">
         <ul class="nav navbar-nav navbar-right">
-
           <!-- single navigation item with active state -->
           <li class="active">
 
@@ -95,7 +91,23 @@
     </nav>
   </div>
 </header>
+<br>
 
+<div class ="container-fluid">
+<% flash.each do |name, message| %>
+<div class="alert alert-<%= name %>" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <% if message.is_a?(Array) %>
+    <ul>
+      <% message.each do |msg| %>
+        <li><%= msg %></li>
+  <% end %>
+  <% else %>
+    <%= message %>
+  <% end %>
+    </ul>
+ </div>
+<% end %>
 
 
 <%= yield %>
