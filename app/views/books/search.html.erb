@@ -9,7 +9,7 @@
 </div>
 
 
-
+<div id="main-content">
 <nav class="sidebar sidebar-fixed">
   <nav class="sidebar">
     <button class="btn btn-block btn-contrast sidebar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
@@ -23,7 +23,7 @@
 
       <!-- wrap content in 'box' div for controlling margins between them -->
       <div class="box">
-        <h3 class="title">Title</h3>
+        <h3 class="title">Filter</h3>
         <p>Some content</p>
       </div>
 
@@ -32,18 +32,24 @@
 </nav>
 
 <div class="container">
-<div class="row portfolio-boxes">
-  <% @all_books.each do |book| %>
-    <div class="col-md-3 portfolio-box portfolio-item">
-      <a href="/books/<%= book.id %>">
-       <div class="image-link">
-        <img src="<%= book.cover %>">
-       </div>
-          <h3 class="title"><%= book.title %></h3>
-          <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
-        </a>
-      </div>
+  <div ng-app="app">
+    <div ng-controller="goalsCtrl">
 
-  <% end %>
+      <div class="row portfolio-boxes">
+        <% @all_books.each do |book| %>
+          <div class="col-md-3 portfolio-box portfolio-item">
+            <a href="/books/<%= book.id %>">
+             <div class="image-link">
+              <img src="<%= book.cover %>">
+             </div>
+                <h3 class="title"><%= book.title %></h3>
+                <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
+              </a>
+            </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
