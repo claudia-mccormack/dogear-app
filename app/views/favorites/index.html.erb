@@ -15,7 +15,7 @@
 <div class="row portfolio-boxes">
   <% @favorites.each do |favorite| %>
   <div class="col-md-3 portfolio-box portfolio-item">
-      <a href="/books/<%= favorite.book.id %>">
+      <a href="/books/<%= favorite.book_id %>">
        <div class="image-link">
         <img src="<%= favorite.book.cover %>">
        </div>

@@ -1,5 +1,10 @@
-//= require jednotka/jquery/jquery.min
+//= require jquery
 //= require jednotka/jquery/jquery.mobile.custom.min
+//= require jquery_ujs
 //= require jednotka/bootstrap/bootstrap.min
 //= require jednotka/plugins/_plugins
 //= require jednotka/jednotka
+//= require bootstrap-datepicker
+//= require angular
+//= require app
+//= require_tree .

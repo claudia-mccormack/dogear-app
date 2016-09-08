@@ -1,0 +1,49 @@
+<div class="page-header page-header-with-icon">
+  <i class="fa fa-suitcase"></i>
+
+  <h2>
+    Search
+    <small>Find New Books</small>
+  </h2>
+
+</div>
+
+
+
+<nav class="sidebar sidebar-fixed">
+  <nav class="sidebar">
+    <button class="btn btn-block btn-contrast sidebar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="sidebar-collapse collapse">
+      <!-- Collapsible sidebar content -->
+
+      <!-- wrap content in 'box' div for controlling margins between them -->
+      <div class="box">
+        <h3 class="title">Title</h3>
+        <p>Some content</p>
+      </div>
+
+    </div>
+  </nav>
+</nav>
+
+<div class="container">
+<div class="row portfolio-boxes">
+  <% @all_books.each do |book| %>
+    <div class="col-md-3 portfolio-box portfolio-item">
+      <a href="/books/<%= book.id %>">
+       <div class="image-link">
+        <img src="<%= book.cover %>">
+       </div>
+          <h3 class="title"><%= book.title %></h3>
+          <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
+        </a>
+      </div>
+
+  <% end %>
+</div>
+</div>

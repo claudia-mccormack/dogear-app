@@ -4,6 +4,11 @@ class BooksController < ApplicationController
     render 'index'
   end
 
+  def search
+    @all_books = Book.all
+    render 'search'
+  end
+
   def show
     @book = Book.find_by(id: params[:id])
     render 'show'

@@ -14,6 +14,7 @@ class GoalsController < ApplicationController
   end
 
   def new
+    @faves = current_user.favorites
     render "new.html.erb"
   end
 

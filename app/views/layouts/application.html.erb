@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>DogearApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body class="very-light-bg">
@@ -20,14 +20,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <% if current_user %>
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        <% else %>
-          <%= link_to "Sign Up", new_user_registration_path %>
-            <br>
-          <%= link_to "Log In", new_user_session_path %>
-            <br>
-        <% end %> -->
+
 
 
         <a class="navbar-brand" href="/">
@@ -62,18 +55,13 @@
   </a>
 
   <!-- dropdown -->
-  <ul class="dropdown-menu" role="menu">
 
-    <!-- dropdown item -->
-    <li>
-      <a href="/favorites">Favorites</a>
-    </li>
-    <li>
-      <a href="/">Recommendations</a>
-    </li>
-    <li>
-      <a href="/goals">Goals</a>
-    </li>
+  <ul class="dropdown-menu" role="menu">
+      <% if current_user %>
+        <li><%= link_to "My Favorites", "/favorites" %></li>
+        <li><%= link_to "My Goals", "/goals" %></li>
+        <li><%= link_to "My Recommendations", "/" %></li>
+      <% end %>
   </ul>
 
 </li>
@@ -88,18 +76,12 @@
 
 <!-- dropdown -->
     <ul class="dropdown-menu" role="menu">
-
-    <!-- dropdown item -->
-    <li>
-      <a href="/users/sign_in">Log In</a>
-    </li>
-    <li>
-      <a href="/users/sign_out">Log Out</a>
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-    </li>
-    <li>
-      <a href="/users/sign_up">Sign Up!</a>
-    </li>
+      <% if current_user %>
+      <li><%= link_to "Log out", destroy_user_session_path %></li>
+      <% else %>
+      <li><%= link_to "Log In", new_user_session_path %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
     </ul>
 
     </li>
