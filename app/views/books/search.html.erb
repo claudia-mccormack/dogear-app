@@ -11,7 +11,7 @@
 
 <div id="main-content">
   <div ng-app="app">
-    <div ng-controller="favoritesCtrl">
+    <div ng-controller="booksCtrl">
       <nav class="sidebar sidebar-fixed">
         <nav class="sidebar">
           <button class="btn btn-block btn-contrast sidebar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
@@ -28,13 +28,13 @@
               <h3 class="title">Filter</h3>
 
                 <% @subjects.each do |subject| %>
-                  <p><input checked="false" type="checkbox" ng-model="subjectFilter" value="<%= subject.name %>"/>
-                     <label><%= subject.name %></label></p>
+                  <p><%= link_to subject.name, "/search?subject_id=#{subject.id}" %></p>
+
                 <% end %>
 
 
-            </div>
 
+            </div>
           </div>
         </nav>
       </nav>
@@ -61,6 +61,9 @@
     </div>
   </div>
 </div>
+
+
+
 </div>
 </div>
 </div>

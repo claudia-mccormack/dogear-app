@@ -5,9 +5,11 @@ class BooksController < ApplicationController
   end
 
   def search
-    @all_books = Book.all
+    # @all_books = Book.all
     @subjects = Subject.all
-    render 'search'
+    subject = Subject.find_by(id: params[:subject_id])
+    @all_books = Book.all if params[:subject_id].nil?
+    @all_books = subject.books if params[:subject_id]
   end
 
   def show

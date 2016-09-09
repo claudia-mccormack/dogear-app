@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem "sprockets", "~> 2.11.0"
 
+gem 'quiet_assets', '~> 1.1'
+
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # gem "font-awesome-rails"
 # gem 'thematic'
