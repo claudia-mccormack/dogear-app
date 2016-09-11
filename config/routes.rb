@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   delete '/favorites' => 'favorites#destroy'
 
   get '/goals' => 'goals#index'
-  get '/goals/:id' => 'goals#show'
+  # get '/goals/:id' => 'goals#show'
   get '/goals/new' => 'goals#new'
   post '/goals' => 'goals#create'
+  get '/goals/:id/edit' => 'goals#edit'
   patch '/goals/:id' => 'goals#update'
   delete '/goals/:id' => 'goals#destroy'
   #

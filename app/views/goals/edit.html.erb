@@ -1,0 +1,24 @@
+<div class="page-header page-header-with-icon">
+  <i class="fa fa-suitcase"></i>
+
+  <h2>Update Progress
+    <small>I am basically Lisa Simpson</small>
+  </h2>
+</div>
+
+
+<div id="main-content">
+  <div class="container">
+    <%= form_tag "/goals/#{@goal.id}", method: :patch do  %>
+    <div>
+    </div>
+    <div>
+      <%= label_tag :finish_by, "Finish By" %>
+      <%= datetime_local_field_tag :finish_by, @goal.finish_by.strftime("%Y-%m-%dT%H:%M") %>
+    </div>
+    <div>
+      <%= submit_tag "Update Goal" %>
+    </div>
+    <% end %>
+  </div>
+</div>
