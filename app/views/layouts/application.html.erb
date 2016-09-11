@@ -2,25 +2,116 @@
 <html>
 <head>
   <title>DogearApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="container">
+<body class="very-light-bg">
+
+  <header id="header">
+  <div class="container">
+    <nav class="navbar navbar-collapsed-sm navbar-default" id="nav" role="navigation">
+      <div class="navbar-header">
+
+        <!-- navigation toggler on small screens -->
+        <button class="navbar-toggle" data-target=".navbar-header-collapse" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="/">
+        <h1 class="text-contrast"><b>DogEar</b></h1>
+          <!-- <img alt="..." width="..." height="..." src="..."> -->
+        </a>
+      </div>
+
+      <!-- navigation -->
+      <div class="collapse navbar-collapse navbar-header-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <!-- single navigation item with active state -->
+          <li class="active">
+
+            <% if current_user %>
+            <a href="/search">
+              <span>
+                Search
+              </span>
+            </a>
+            <% end %>
+          </li>
+
+          <!-- single navigation item with dropdown (docs below) -->
+          <li class="dropdown">
+  <a class="dropdown-toggle" data-delay="50" data-hover="dropdown" data-toggle="dropdown" href="/">
+    <span>
+      Menu
+    </span>
+  </a>
+
+  <!-- dropdown -->
+
+  <ul class="dropdown-menu" role="menu">
+      <% if current_user %>
+        <li><%= link_to "My Favorites", "/favorites" %></li>
+        <li><%= link_to "My Goals", "/goals" %></li>
+        <li><%= link_to "My Recommendations", "/" %></li>
+      <% end %>
+  </ul>
+
+</li>
+
+<!-- single navigation item with dropdown (docs below) -->
+<li class="dropdown">
+  <a class="dropdown-toggle" data-delay="50" data-hover="dropdown" data-toggle="dropdown" href="/">
+    <span>
+      Account
+    </span>
+  </a>
+
+<!-- dropdown -->
+    <ul class="dropdown-menu" role="menu">
+      <% if current_user %>
+      <li><%= link_to "Log out", destroy_user_session_path %></li>
+      <% else %>
+      <li><%= link_to "Log In", new_user_session_path %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+
+    </li>
+
+          <!-- single navigation item with multilevel dropdown (docs below) -->
+
+        </ul>
+
+      </div>
+
+    </nav>
+  </div>
+</header>
+<br>
+
+<div class ="container-fluid">
+<% flash.each do |name, message| %>
+<div class="alert alert-<%= name %>" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <% if message.is_a?(Array) %>
+    <ul>
+      <% message.each do |msg| %>
+        <li><%= msg %></li>
+  <% end %>
+  <% else %>
+    <%= message %>
+  <% end %>
+    </ul>
+ </div>
+<% end %>
 
 
 <%= yield %>
-<% if current_user %>
-  <h3><%= link_to "View Your Favorites", "/favorites" %></h3>
-<% end %>
-  <% if current_user %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign Up", new_user_registration_path %>
-      <br>
-    <%= link_to "Log In", new_user_session_path %>
-      <br>
-  <% end %>
+
 
 </body>
 </html>

@@ -28,6 +28,8 @@ gem 'devise'
 gem "sprockets", "~> 2.11.0"
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem "compass-rails"
+gem 'quiet_assets', '~> 1.1'
 # gem "font-awesome-rails"
 # gem 'thematic'
 # gem "compass-rails"

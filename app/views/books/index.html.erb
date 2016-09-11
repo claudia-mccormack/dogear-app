@@ -1,11 +1,16 @@
-<div class="row books-index">
+<div class="container">
+<div class="row portfolio-boxes">
   <% @all_books.each do |book| %>
+    <div class="col-md-3 portfolio-box portfolio-item">
       <a href="/books/<%= book.id %>">
-      <div class="col-md-4 well">
-      <img src="<%= book.cover %>">
-      <h3 class="title"><%= book.title %></h3>
-      <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
-    </a>
-  </div>
+       <div class="image-link">
+        <img src="<%= book.cover %>">
+       </div>
+          <h3 class="title"><%= book.title %></h3>
+          <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
+        </a>
+      </div>
+
   <% end %>
+</div>
 </div>
