@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911201103) do
+ActiveRecord::Schema.define(version: 20160914224341) do
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer  "book_id"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 20160911201103) do
     t.integer  "rating"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.date     "deadline"
+    t.integer  "on_page"
+    t.boolean  "tracking",   default: false
   end
 
   create_table "goal_books", force: :cascade do |t|

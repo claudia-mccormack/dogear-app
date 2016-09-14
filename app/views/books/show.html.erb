@@ -7,14 +7,12 @@
 <p>Published in <%= @book.pub %></p>
 <p><%= @book.pages %> pages</p>
 <% @book.subjects.each do |subject| %>
-<%= subject.name %>,
+<%= link_to "#{subject.name}", "/subjects/#{subject.id}" %>
 <% end %>
-<br>
-<%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %>
-<br>
-</a>
-<%= link_to "Edit Book", "/books/#{@book.id}/edit" %>
-<br>
-<%= link_to "Delete Book", "/books/#{@book.id}", method: "delete" %>
-<br><br>
+
+
+<div><%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %>
+</div>
+
+
 </div>

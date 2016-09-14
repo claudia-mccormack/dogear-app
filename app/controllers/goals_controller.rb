@@ -2,10 +2,11 @@ class GoalsController < ApplicationController
 # require 'pry'
   def index
     @goals = current_user.goals
-    @books = []
-    @goals.each do |g|
-      @books.push(Book.where(id: g.book_id).take)
-    end
+    @goal_books = GoalBook.where()
+    # @books = []
+    # @goals.each do |g|
+    #   @books.push(Book.where(id: g.book_id).take)
+    # end
     @favorites = Favorite.where(user_id: current_user.id)
     render 'index'
   end

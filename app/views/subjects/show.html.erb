@@ -1,0 +1,34 @@
+<div id="main-content-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <h1 class="title">
+          <%= @subject.name %>
+
+          <small><!-- optional subtitle --></small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div class="row portfolio-boxes">
+      <% @books.each do |book| %>
+        <div class="col-md-3 portfolio-box portfolio-item">
+          <a href="/books/<%= book.id %>">
+           <div class="image-link">
+            <img src="<%= book.cover %>">
+           </div>
+              <h3 class="title"><%= book.title %></h3>
+              <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
+            </a>
+          </div>
+
+      <% end %>
+    </div>
+</div>
+</div>

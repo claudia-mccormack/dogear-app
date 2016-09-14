@@ -1,4 +1,5 @@
 class Goal < ActiveRecord::Base
   belongs_to :user
-  belongs_to :book
+  has_many :goal_books
+  has_many :books, through: :goal_books
 end

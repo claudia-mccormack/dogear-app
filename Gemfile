@@ -29,7 +29,6 @@ gem "sprockets", "~> 2.11.0"
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem "compass-rails"
-gem 'quiet_assets', '~> 1.1'
 # gem "font-awesome-rails"
 # gem 'thematic'
 # gem "compass-rails"
@@ -50,6 +49,7 @@ gem 'pry-nav', '~> 0.2.4'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'quiet_assets'
 end
 
 group :development do

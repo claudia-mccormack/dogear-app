@@ -224,7 +224,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pry-nav (~> 0.2.4)
-  quiet_assets (~> 1.1)
+  quiet_assets
   rails (= 4.2.6)
   rainbow (~> 2.1)
   rspec (~> 3.5)
