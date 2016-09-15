@@ -6,15 +6,38 @@ class FavoritesController < ApplicationController
     render "index.html.erb"
   end
 
+  def deadline
+    @favorite = Favorite.find_by(
+      book_id: params[:book_id],
+      user_id: current_user.id
+    )
+    @favorite.update!(
+      deadline: params[:deadline]
+    )
+    redirect_to "/favorites"
+  end
+
   def finished
     @favorite = Favorite.find_by(
       book_id: params[:book_id],
       user_id: current_user.id
     )
-    @favorite.update(
+    @favorite.update!(
       finished: true
     )
-    redirect_to "/"
+    redirect_to "/favorites"
+  end
+
+  def rating
+    @favorite = Favorite.find_by(
+      book_id: params[:book_id],
+      user_id: current_user.id,
+      finished: true
+    )
+    @favorite.update!(
+      rating: params[:rating]
+    )
+    redirect_to "/favorites"
   end
 
   def create

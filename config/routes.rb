@@ -2,22 +2,20 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/' => 'books#index'
-  get '/books/new' => 'books#new'
   post '/books' => 'books#create'
   get '/search' => 'books#search'
   get '/books/:id' => 'books#show'
-  get '/books/:id/edit' => 'books#edit'
-  patch '/books/:id' => 'books#update'
-  delete '/books/:id' => 'books#destroy'
 
   get '/favorites' => 'favorites#index'
   post '/favorites' => 'favorites#create'
+  patch '/deadline' => 'favorites#deadline'
   patch '/favorites' => 'favorites#finished'
-  delete '/favorites' => 'favorites#destroy'
+  patch '/rating' => 'favorites#rating'
+  delete '/favorites/:id' => 'favorites#destroy'
 
   get '/subjects/:id' => 'subjects#show'
 
-  
+
 
 
 

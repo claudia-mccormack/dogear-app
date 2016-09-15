@@ -7,9 +7,8 @@
 <p>Published in <%= @book.pub %></p>
 <p><%= @book.pages %> pages</p>
 <% @book.subjects.each do |subject| %>
-<%= link_to "#{subject.name}", "/subjects/#{subject.id}" %>
+<p></p><%= link_to "#{subject.name}", "/subjects/#{subject.id}" %></p>
 <% end %>
-
 
 <div><%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %>
 </div>
