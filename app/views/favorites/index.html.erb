@@ -13,35 +13,34 @@
 <div class="container">
 <div class="row portfolio-boxes">
   <% @favorites.each do |favorite| %>
-  <div class="col-md-3 portfolio-box portfolio-item">
-      <a href="/books/<%= favorite.book_id %>">
-       <div class="image-link">
-        <img src="<%= favorite.book.cover %>">  </a>
-       </div>
-          <h3 class="title"><%= favorite.book.title %></h3>
-          <h4 class="author"><%= favorite.book.author_first %> <%= favorite.book.author_last %></h4>
-          <% if !favorite.finished %>
-            <%= form_tag "/deadline?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
-              <%= label_tag :deadline %>
-              <%= text_field_tag :deadline %>
-              <%= submit_tag %>
+    <div class="col-md-3 portfolio-box portfolio-item">
+        <a href="/books/<%= favorite.book_id %>">
+          <div class="image-link"><img src="<%= favorite.book.cover %>"></a></div>
+            <h3 class="title"><%= favorite.book.title %></h3>
+            <h4 class="author"><%= favorite.book.author_first %> <%= favorite.book.author_last %></h4>
+
+            <% if !favorite.finished %>
+              <%= form_tag "/deadline?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
+                <%= label_tag :deadline %>
+                <%= text_field_tag :deadline %>
+                <%= submit_tag %>
+              <% end %>
+              <br>
+              <%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
             <% end %>
-            <br>
-            <%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
-          <% end %>
 
-          <% if favorite.finished %>
-            <%= form_tag "/rating?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
-              <%= label_tag :rating %>
-              <%= text_field_tag :rating %>
-              <%= submit_tag %>
+            <% if favorite.finished %>
+              <%= form_tag "/rating?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
+                <%= label_tag :rating %>
+                <%= text_field_tag :rating %>
+                <%= submit_tag %>
+              <% end %>
             <% end %>
-          <% end %>
 
-        <br>
-        <%= link_to "Remove from Favorites", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "delete" %>
+          <br>
+          <%= link_to "Remove from Favorites", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "delete" %>
 
-    </div>
+      </div>
     <% end %>
 </div>
 </div>
