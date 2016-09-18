@@ -23,27 +23,11 @@ before_action :authenticate_user!
       @recommendations.sort_by { |r| r["ratings"] }
     end
 
-    @rec_books = []
     @recommendations.each do |r|
       @subj = Subject.find_by(id: r[:subject_id])
-      @rec_books << @subj.books
     end
 
     render 'index'
   end
 
 end
-
-
-
-
-
-
-## View
-#
-# @subjects.each do |subject|
-#   subject[:subject].name
-#   subject[:ratings]
-# end
-#
-# @subjects == [{subject: "Historyical", ratings: 4}, {subject: "blah", rating: 5}]

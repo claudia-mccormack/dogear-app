@@ -2,21 +2,28 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1 class="title">Recomended Reading
-        </div>
+        <h1 class="title">Recomended Reading</h1>
       </div>
     </div>
   </div>
 
-
   <div id="main-content">
     <div class="container">
-      <% @recommendations.each do |rec| %>
-        <%= rec[:subject] %>
-        <%= rec[:ratings] %>
-      <% end %>
-      <br><br>
-      <%= @rec_books%>
-
+      <div class="row portfolio-boxes">
+        <% @recommendations.each do |rec| %>
+          <h2><%= rec[:subject] %></h2>
+          <h3>Average Rating: <%= rec[:ratings] %></h3>
+          <% @subj.books.each do |s| %>
+            <div class="col-md-3 portfolio-box portfolio-item">
+              <a href="/books/<%= s.id %>">
+                <div class="image-link"><img src="<%= s.cover %>"></div>
+              </a>
+              <h3 class="title"><%= s.title %></h3>
+              <h4 class="author"><%= s.author_first %> <%= s.author_last %></h4>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
