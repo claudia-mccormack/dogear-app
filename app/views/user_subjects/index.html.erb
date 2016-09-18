@@ -1,0 +1,22 @@
+<div id="main-content-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="title">Recomended Reading
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="main-content">
+    <div class="container">
+      <% @recommendations.each do |rec| %>
+        <%= rec[:subject] %>
+        <%= rec[:ratings] %>
+      <% end %>
+      <br><br>
+      <%= @rec_books%>
+
+    </div>
+  </div>

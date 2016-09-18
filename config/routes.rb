@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   get '/favorites' => 'favorites#index'
   post '/favorites' => 'favorites#create'
   patch '/deadline' => 'favorites#deadline'
+  patch '/tracking' => 'favorites#tracking'
   patch '/favorites' => 'favorites#finished'
   patch '/rating' => 'favorites#rating'
   delete '/favorites/:id' => 'favorites#destroy'
 
   get '/subjects/:id' => 'subjects#show'
+
+  get '/recommendations' => 'user_subjects#index'
 
 
 

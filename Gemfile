@@ -37,7 +37,7 @@ gem "compass-rails"
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'rspec', '~> 3.5'
+# gem 'rspec', '~> 3.5'
 gem 'pry-nav', '~> 0.2.4'
 
 # Use Unicorn as the app server
