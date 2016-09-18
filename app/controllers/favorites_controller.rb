@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   require 'pry'
   def index
     @favorites = current_user.favorites
-    render "index.html.erb"
+
   end
 
   def deadline
@@ -12,7 +12,8 @@ class FavoritesController < ApplicationController
       user_id: current_user.id
     )
     @favorite.update!(
-      deadline: params[:deadline]
+      deadline: Date.new(['deadline(1i)'],['deadline(2i)'],['deadline(3i)']),
+      tracking: true
     )
     redirect_to "/favorites"
   end
@@ -37,6 +38,13 @@ class FavoritesController < ApplicationController
     @favorite.update!(
       rating: params[:rating]
     )
+    @favorite.book.subjects.each do |subject|
+      @user_subject = UserSubject.create(
+        user_id: current_user.id,
+        subject_id: subject.id,
+        rating: params[:rating]
+      )
+    end
     redirect_to "/favorites"
   end
 
