@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160914224341) do
   end
 
   create_table "goal_books", force: :cascade do |t|
-    t.string   "goal_id"
+    t.integer  "goal_id"
     t.string   "integer"
     t.integer  "book_id"
     t.datetime "created_at", null: false
