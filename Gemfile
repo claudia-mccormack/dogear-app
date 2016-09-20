@@ -21,6 +21,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
+# use bootstrap-datepicker-rails to collect deadlines for favorites
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap_form'
+
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

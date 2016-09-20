@@ -12,8 +12,9 @@ class FavoritesController < ApplicationController
       user_id: current_user.id
     )
     @favorite.update!(
-      deadline: Date.new(['deadline(1i)'],['deadline(2i)'],['deadline(3i)']),
-      tracking: true
+      deadline: Date.new(params[:deadline]["year"].to_i,params[:deadline]["month"].to_i,params[:deadline]["day"].to_i),
+      tracking: true,
+      on_page: 0
     )
     redirect_to "/favorites"
   end
