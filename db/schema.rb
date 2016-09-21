@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919235512) do
+ActiveRecord::Schema.define(version: 20160920235342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,27 +47,7 @@ ActiveRecord::Schema.define(version: 20160919235512) do
     t.date     "deadline",   default: '2016-09-19'
     t.integer  "on_page"
     t.boolean  "tracking",   default: false
-  end
-
-  create_table "goal_books", force: :cascade do |t|
-    t.integer  "goal_id"
-    t.string   "integer"
-    t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "goals", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "num_books"
-    t.integer  "num_pages"
-    t.integer  "days"
-    t.integer  "weeks"
-    t.integer  "months"
-    t.integer  "years"
     t.integer  "progress"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "models", force: :cascade do |t|
@@ -87,13 +67,6 @@ ActiveRecord::Schema.define(version: 20160919235512) do
 
   add_index "models", ["email"], name: "index_models_on_email", unique: true, using: :btree
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
-
-  create_table "reading_goals", force: :cascade do |t|
-    t.integer  "book_id"
-    t.integer  "goal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"

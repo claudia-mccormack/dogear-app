@@ -1,9 +1,8 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
-  require 'pry'
+require 'pry'
   def index
     @favorites = current_user.favorites
-
   end
 
   def deadline
@@ -14,12 +13,24 @@ class FavoritesController < ApplicationController
     @favorite.update!(
       deadline: Date.new(params[:deadline]["year"].to_i,params[:deadline]["month"].to_i,params[:deadline]["day"].to_i),
       tracking: true,
-      on_page: 0
+      on_page: 0,
+    )
+    redirect_to "/favorites"
+  end
+
+  def progress
+    @favorite = Favorite.find_by(
+      book_id: params[:book_id],
+      user_id: current_user.id
+    )
+    @favorite.update!(
+      on_page: params[:on_page]
     )
     redirect_to "/favorites"
   end
 
   def finished
+    # binding.pry
     @favorite = Favorite.find_by(
       book_id: params[:book_id],
       user_id: current_user.id
@@ -46,7 +57,7 @@ class FavoritesController < ApplicationController
         rating: params[:rating]
       )
     end
-    redirect_to "/favorites"
+    redirect_to "/"
   end
 
   def create
@@ -66,9 +77,10 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite = Favorite.find_by(
-      book_id: params[:book_id],
+      id: params[:id],
       user_id: current_user.id
     )
+    # binding.pry
     @favorite.delete
     redirect_to "/favorites"
   end

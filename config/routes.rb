@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/favorites' => 'favorites#index'
   post '/favorites' => 'favorites#create'
   patch '/deadline' => 'favorites#deadline'
-  patch '/tracking' => 'favorites#tracking'
+  patch '/progress' => 'favorites#progress'
   patch '/favorites' => 'favorites#finished'
   patch '/rating' => 'favorites#rating'
   delete '/favorites/:id' => 'favorites#destroy'

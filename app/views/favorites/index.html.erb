@@ -12,7 +12,7 @@
 <div class="container">
   <div class="row portfolio-boxes">
   <% @favorites.each do |favorite| %>
-    <div class="col-md-3 portfolio-box portfolio-item">
+    <div class="col-md-4 portfolio-box portfolio-item">
         <a href="/books/<%= favorite.book_id %>">
           <div class="image-link"><img src="<%= favorite.book.cover %>"></a>
           </div>
@@ -22,13 +22,22 @@
             <% if !favorite.finished %>
                 <%= form_tag "/deadline?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
                   <%= label_tag :deadline %>
-                  <%= select_date Date.today, prefix: :deadline %>
+                  <%= select_date Date.today, prefix: :deadline %> <br>
                   <%= submit_tag %>
                 <% end %>
-              <% if favorite.deadline %>
-                Deadline: <%= favorite.deadline %>
-              <% end %>
             <% end %>
+
+            <% if favorite.deadline %>
+                Deadline: <%= favorite.deadline %> <br>
+                I'm on page: <%= favorite.on_page %>
+                  <%= form_tag "/progress?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
+                    <%= label_tag :on_page %>
+                    <%= text_field_tag :on_page %>
+                    <%= submit_tag "Update Progress" %>
+                  <% end %>
+                Progress: <%= ((favorite.on_page.to_f / favorite.book.pages.to_f) * 100).round(0) %>%
+            <% end %>
+
             <%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
 
 
@@ -41,7 +50,11 @@
             <% end %>
 
 
-          <%= link_to "Remove from Favorites", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "delete" %>
+          <%= link_to "Remove from Favorites", "/favorites/#{favorite.id}", method: "delete" %>
+
+
+
+
 
       </div>
     <% end %>
