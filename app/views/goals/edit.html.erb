@@ -1,24 +1,23 @@
 <div class="page-header page-header-with-icon">
   <i class="fa fa-suitcase"></i>
-
-  <h2>Update Progress
-    <small>I am basically Lisa Simpson</small>
-  </h2>
+  <h2>Update Progress</h2>
 </div>
 
 
 <div id="main-content">
   <div class="container">
-    <%= form_tag "/goals/#{@goal.id}", method: :patch do  %>
-    <div>
-    </div>
-    <div>
-      <%= label_tag :finish_by, "Finish By" %>
-      <%= datetime_local_field_tag :finish_by, @goal.finish_by.strftime("%Y-%m-%dT%H:%M") %>
-    </div>
-    <div>
-      <%= submit_tag "Update Goal" %>
-    </div>
-    <% end %>
+    <h2 class="text-contrast"><%= @book.title %></h2>
+      <b><%= @book.author_first %> <%= @book.author_last %></b><br>
+        <img src="<%= @book.cover %>" alt=""><br>
+          <p><%= @book.pages %> pages</p>
+            <div>
+              <%= form_tag "/goals/#{@goal.id}", method: :patch do  %>
+                <%= label_tag :deadline %>
+                <%= select_date Date.today, prefix: :deadline %>
+                <%= label_tag :on_page %>
+                <%= text_field_tag :on_page %>
+                <%= submit_tag "Update Progress"%>
+              <% end %>
+            </div>
   </div>
 </div>
