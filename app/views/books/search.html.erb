@@ -8,62 +8,48 @@
 
 </div>
 
+<div ng-app="app">
+  <div ng-controller="searchCtrl">
+    <div id="main-content">
+        <nav class="sidebar sidebar-fixed">
+          <nav class="sidebar">
+            <button class="btn btn-block btn-contrast sidebar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="sidebar-collapse collapse">
+              <!-- Collapsible sidebar content -->
 
-<div id="main-content">
-  <div ng-app="app">
-    <div ng-controller="booksCtrl">
-      <nav class="sidebar sidebar-fixed">
-        <nav class="sidebar">
-          <button class="btn btn-block btn-contrast sidebar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="sidebar-collapse collapse">
-            <!-- Collapsible sidebar content -->
+              <!-- wrap content in 'box' div for controlling margins between them -->
+              <div class="box">
+                <h3 class="title">Filter by Subject</h3>
 
-            <!-- wrap content in 'box' div for controlling margins between them -->
-            <div class="box">
-              <h3 class="title">Filter</h3>
+                  <ul class="list-unstyled">
+                    <li ng-repeat="subject in subjects"><input type="checkbox" ng-change="searchSubjects(subject, $index)" ng-model="subject.checked" ng-value="subject.name"> {{subject.name}} </li>
+                  </ul>
 
-                <% @subjects.each do |subject| %>
-                  <p><%= link_to subject.name, "/search?subject_id=#{subject.id}" %></p>
+              </div>
+            </div>
+          </nav>
+        </nav>
 
-                <% end %>
-
-
-
+        <div class="container">
+          <div class="row portfolio-boxes">
+            <div ng-repeat="book in books">
+              <div class="col-md-4 portfolio-box portfolio-item">
+                <a href="/books/{{ book.id }}">
+                 <div class="image-link">
+                  <img src="{{book.cover}}">
+                 </div>
+                    <h3 class="title">{{book.title}}</h3>
+                    <h4 class="author">{{book.author_first}} {{book.author_last}}</h4>
+                  </a>
+              </div>
             </div>
           </div>
-        </nav>
-      </nav>
-
-<div class="container">
-  <div ng-app="app">
-    <div ng-controller="goalsCtrl">
-
-      <div class="row portfolio-boxes">
-        <% @all_books.each do |book| %>
-          <div class="col-md-4 portfolio-box portfolio-item">
-            <a href="/books/<%= book.id %>">
-             <div class="image-link">
-              <img src="<%= book.cover %>">
-             </div>
-                <h3 class="title"><%= book.title %></h3>
-                <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
-
-              </a>
-            </div>
-
-        <% end %>
-      </div>
+        </div>
     </div>
   </div>
-</div>
-
-
-
-</div>
-</div>
 </div>
