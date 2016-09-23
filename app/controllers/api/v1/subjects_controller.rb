@@ -1,4 +1,4 @@
-class SubjectsController < ApplicationController
+class Api::V1::SubjectsController < ApplicationController
   def index
     @subjects = Subject.all
   end
@@ -6,6 +6,6 @@ class SubjectsController < ApplicationController
   def show
     @subject = Subject.find_by(id: params[:id])
     @books = @subject.books.all
+    render 'show'
   end
-
 end
