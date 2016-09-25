@@ -15,11 +15,6 @@ class Api::V1::BooksController < ApplicationController
       @all_books = Book.joins(:subjects).where(subjects: {name: params[:name].split(",")}).distinct
     end
     render 'search'
-
-    # @subjects = Subject.all
-    # subject = Subject.find_by(id: params[:subject_id])
-    # @all_books = Book.all if params[:subject_id].nil?
-    # @all_books = subject.books if params[:subject_id]
   end
 
   def show

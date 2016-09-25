@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # use Unirest for API database calls
 gem 'unirest'
 
+
 gem 'seed_dump'
 gem 'rainbow', '~> 2.1'
 # Use jquery as the JavaScript library
