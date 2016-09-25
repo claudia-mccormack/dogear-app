@@ -4,15 +4,23 @@ class Api::V1::BooksController < ApplicationController
     if params[:name].nil? || params[:name].empty?
       @all_books = Book.all
     else
-      @all_books = Book.joins(:subjects).where(subjects: {name: params[:name].split(",")}).distinct
+      names = params[:name].split(',')
+      @all_books = Book.joins(:subjects)
+        .where(subjects: {name: names})
+        .group("books.id")
+        .having("count(*) >= ?", names.length)
     end
   end
 
   def search
     if params[:name].nil? || params[:name].empty?
-      @all_books = Book.all
+      @books = Book.all
     else
-      @all_books = Book.joins(:subjects).where(subjects: {name: params[:name].split(",")}).distinct
+      names = params[:name].split(',')
+      @books = Book.joins(:subjects)
+        .where(subjects: {name: names})
+        .group("books.id")
+        .having("count(*) >= ?", names.length)
     end
     render 'search'
   end

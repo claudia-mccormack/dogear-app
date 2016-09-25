@@ -1,17 +1,18 @@
 <div class="container">
-<div class="row portfolio-boxes">
-  <% @all_books.each do |book| %>
-    <div class="col-md-3 portfolio-box portfolio-item">
-      <a href="/books/<%= book.id %>">
-       <div class="image-link">
-        <img src="<%= book.cover %>">
-       </div>
+  <div class="row portfolio-boxes">
+    <% @all_books.each do |book| %>
+      <div class="col-md-3 portfolio-box portfolio-item">
+        <a href="/books/<%= book.id %>">
+         <div class="image-link">
+          <img src="<%= book.cover %>">
+         </div>
           <h3 class="title"><%= book.title %></h3>
           <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
-          <%= link_to "Add To Favorites", "/favorites?book_id=#{book.id}&user_id=#{current_user.id}", method: "post" %>
+          <% if current_user %>
+            <%= link_to "Add To Favorites", "/favorites?book_id=#{book.id}&user_id=#{current_user.id}", method: "post"%>
+          <% end %>
         </a>
       </div>
-
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>

@@ -9,28 +9,28 @@
       {name: "adventure", checked: false},
       {name: "political", checked: false},
       {name: "psychological", checked: false},
-    ]
-    var subjects = []
+    ];
+    var subjects = [];
     $http.get('/api/v1/books.json').then(function(response) {
       $scope.books = response.data;
     });
 
     $scope.searchSubjects = function(subject) {
       if (subject.checked) {
-        subjects.push(subject.name)
+        subjects.push(subject.name);
       } else {
-        var index = subjects.indexOf(subject)
+        var index = subjects.indexOf(subject);
         subjects.splice(index, 1);
       }
       var subjectsParams = {
           subjects: subjects
-      }
+      };
       $http({
         method: "GET",
         url: "/api/v1/books.json?name=" + subjects
       }).then(function(response) {
         console.log($scope.books = response.data);
-      })
-    }
+      });
+    };
   });
 })();

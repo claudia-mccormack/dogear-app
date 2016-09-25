@@ -44,10 +44,22 @@ ActiveRecord::Schema.define(version: 20160920235342) do
     t.integer  "rating"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.date     "deadline",   default: '2016-09-19'
+    t.date     "deadline",   default: '2016-09-25'
     t.integer  "on_page"
     t.boolean  "tracking",   default: false
     t.integer  "progress"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "progress"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "on_page"
+    t.integer  "book_id"
+    t.date     "deadline"
+    t.date     "date_set"
+    t.date     "date_complete"
   end
 
   create_table "models", force: :cascade do |t|

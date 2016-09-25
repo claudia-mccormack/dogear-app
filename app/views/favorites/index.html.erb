@@ -10,49 +10,19 @@
 
 
 <div ng-app="app">
-  <div class="container">
-    <div class="row portfolio-boxes">
-      <% @favorites.each do |favorite| %>
+  <div ng-controller="favoritesCtrl" ng-init="setup()">
+    <div class="container">
+      <div ng-repeat="favorite in favorites">
         <div class="col-md-4 portfolio-box portfolio-item">
-          <a href="/books/<%= favorite.book_id %>">
-            <div class="image-link"><img src="<%= favorite.book.cover %>"></a>
-            </div>
-              <h3 class="title"><%= favorite.book.title %></h3>
-              <h4 class="author"><%= favorite.book.author_first %> <%= favorite.book.author_last %></h4>
+            <a href="/books/{{ favorite.book_id }}">
+              <div class="image-link"><img src="{{ favorite.cover }}"></a>
+              </div>
+                <h3 class="title">{{ favorite.title }}</h3>
+                <h4 class="author">{{ favorite.author_first }} {{ favorite.author_last }}</h4>
+                <i class="star-rating fa fa-lg" ng-repeat="star in favorite.stars" ng-click="rateFavorite(favorite, star)" ng-mouseover="fillStar(favorite, star)" ng-mouseleave="emptyStar(favorite, star)" ng-class="{'fa-star': star.filled, 'fa-star-o': !star.filled}" aria-hidden="true"></i>
 
-                <% if !favorite.finished %>
-                    <%= form_tag "/deadline?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
-                      <%= label_tag :deadline %>
-                      <%= select_date Date.today, prefix: :deadline %> <br>
-                      <%= submit_tag %>
-                    <% end %>
-                  <%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
-                <% end %>
-
-                <% if favorite.deadline %>
-                    Deadline: <%= favorite.deadline %> <br>
-                    I'm on page: <%= favorite.on_page %>
-                      <%= form_tag "/progress?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
-                        <%= label_tag :on_page %>
-                        <%= text_field_tag :on_page %>
-                        <%= submit_tag "Update Progress" %>
-                      <% end %>
-                    Progress: <%= ((favorite.on_page.to_f / favorite.book.pages.to_f) * 100).round(0) %>%
-                <% end %>
-
-
-
-                <% if favorite.finished %>
-                  <div ng-controller="ratingsCtrl" ng-init="setup()">
-                    <i class="star-rating fa fa-lg" ng-repeat="star in favorite.stars" ng-click="favoriteFramework(favorite, star)" ng-mouseover="fillStar(favorite, star)" ng-mouseleave="emptyStar(favorite, star)" ng-class="{'fa-star': star.filled, 'fa-star-o': !star.filled}" aria-hidden="true"></i>
-                  </div>
-                <% end %>
-
-
-              <%= link_to "Remove from Favorites", "/favorites/#{favorite.id}", method: "delete" %>
-
-          </div>
-        <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
