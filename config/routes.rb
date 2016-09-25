@@ -26,11 +26,12 @@ Rails.application.routes.draw do
       get '/books/:id' => 'books#show'
 
       get '/favorites' => 'favorites#index'
-      post '/favorites' => 'favorites#create'
-      patch '/deadline' => 'favorites#deadline'
-      patch '/progress' => 'favorites#progress'
-      patch '/favorites' => 'favorites#finished'
-      patch '/rating' => 'favorites#rating'
+      post '/favorites/:id' => 'favorites#create'
+      # post '/favorites/:id' => 'favorites#update'
+      # patch '/deadline' => 'favorites#deadline'
+      # patch '/progress' => 'favorites#progress'
+      # patch '/favorites' => 'favorites#finished'
+      # patch '/rating' => 'favorites#rating'
       delete '/favorites/:id' => 'favorites#destroy'
 
       get 'subjects' => 'subjects#index'

@@ -12,10 +12,10 @@
     $scope.rateFavorite = function(favorite, star) {
       console.log(star);
       var favoriteParams = {
-        favorite_id: favorite.id,
+        id: favorite.id,
         rating: star.rating
       };
-      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
+      $http.post("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
         favorite.rating = response.rating;
         fillStars();
       });
