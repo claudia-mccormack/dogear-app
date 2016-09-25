@@ -1,0 +1,29 @@
+<% if !favorite.finished %>
+    <%= form_tag "/deadline?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
+      <%= label_tag :deadline %>
+      <%= select_date Date.today, prefix: :deadline %> <br>
+      <%= submit_tag %>
+    <% end %>
+<% end %>
+
+<% if favorite.deadline %>
+  Deadline: <%= favorite.deadline %> <br>
+  I'm on page: <%= favorite.on_page %>
+    <%= form_tag "/progress?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
+      <%= label_tag :on_page %>
+      <%= text_field_tag :on_page %>
+      <%= submit_tag "Update Progress" %>
+    <% end %>
+  Progress: <%= ((favorite.on_page.to_f / favorite.book.pages.to_f) * 100).round(0) %>%
+<% end %>
+
+<%= link_to "Finished Reading!", "/favorites?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: "patch" %>
+
+<% if favorite.finished %>
+<%= form_tag "/rating?book_id=#{favorite.book.id}&user_id=#{current_user.id}", method: :patch do %>
+  <%= label_tag :rating %>
+  <%= text_field_tag :rating %>
+  <%= submit_tag %>
+<% end %>
+<% end %>
+<%= link_to "Remove from Favorites", "/favorites/#{favorite.id}", method: "delete" %>
