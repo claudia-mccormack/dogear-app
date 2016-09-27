@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # use Unirest for API database calls
 gem 'unirest'
 
+gem 'googlebooks', '~> 0.0.9'
 
 gem 'seed_dump'
 gem 'rainbow', '~> 2.1'

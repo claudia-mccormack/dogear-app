@@ -1,5 +1,5 @@
 class Api::V1::BooksController < ApplicationController
-  require 'pry'
+require 'googlebooks'
   def index
     if params[:name].nil? || params[:name].empty?
       @all_books = Book.all

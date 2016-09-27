@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+require 'googlebooks'
   def index
     @all_books = Book.all
   end
