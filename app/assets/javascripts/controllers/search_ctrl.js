@@ -3,12 +3,14 @@
 
   angular.module('app').controller("searchCtrl", function($scope, $http) {
     $scope.subjects = [
-      {name: "historical", checked: false},
-      {name: "epic/saga", checked: false},
-      {name: "family", checked: false},
-      {name: "adventure", checked: false},
-      {name: "political", checked: false},
-      {name: "psychological", checked: false},
+      {name: "Historical", checked: false},
+      {name: "Epic", checked: false},
+      {name: "Political", checked: false},
+      {name: "Family", checked: false},
+      {name: "New York", checked: false},
+      {name: "Satire", checked: false},
+      {name: "Relationships", checked: false},
+      {name: "Mystery", checked: false},
     ];
     var subjects = [];
     $http.get('/api/v1/books.json').then(function(response) {
