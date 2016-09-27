@@ -30,4 +30,12 @@ before_action :authenticate_user!
     render 'index'
   end
 
+  def create
+    @user_subject = UserSubject.create(
+      user_id: current_user.id,
+      subject_id: params[:subject_id],
+      rating: params[:rating]
+    )
+  end
+
 end

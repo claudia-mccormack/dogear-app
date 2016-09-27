@@ -4,14 +4,16 @@
       <div class="col-md-3 portfolio-box portfolio-item">
         <a href="/books/<%= book.id %>">
          <div class="image-link">
-          <img src="<%= book.cover %>">
-         </div>
-          <h3 class="title"><%= book.title %></h3>
-          <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
-          <% if current_user %>
-            <%= link_to "Add To Favorites", "/favorites?book_id=#{book.id}&user_id=#{current_user.id}", method: "post"%>
-          <% end %>
-        </a>
+            <img src="<%= book.cover %>">
+              <div class="hover-container">
+                <div class="inner">
+                  <h3 class="title"><%= book.title %></h3>
+                  <h4 class="author"><%= book.author_first %> <%= book.author_last %></h4>
+                </a>
+                  <button><%= link_to "Add to Favorites", "/favorites?book_id=#{book.id}&user_id=#{current_user.id}", method: "post"%></button>
+                </div>
+              </div>
+          </div>
       </div>
     <% end %>
   </div>

@@ -26,7 +26,8 @@ Rails.application.routes.draw do
       get '/books/:id' => 'books#show'
 
       get '/favorites' => 'favorites#index'
-      post '/favorites/:id' => 'favorites#create'
+      post '/favorites' => 'favorites#create'
+      patch '/favorites/:id' => 'favorites#update'
       # post '/favorites/:id' => 'favorites#update'
       # patch '/deadline' => 'favorites#deadline'
       # patch '/progress' => 'favorites#progress'
