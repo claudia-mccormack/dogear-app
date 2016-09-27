@@ -8,14 +8,13 @@
       fillStars();
     });
 
-
     $scope.rateFavorite = function(favorite, star) {
       console.log(star);
       var favoriteParams = {
         id: favorite.id,
         rating: star.rating
       };
-      $http.post("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
+      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
         favorite.rating = response.rating;
         fillStars();
       });
@@ -45,13 +44,38 @@
       });
     };
 
-    // $scope.setDeadline = function(favorite, deadline){
-    //   $scope.favorites.forEach(function(f){
-    //     if (!f.finished)
-    //   });
-    // };
+    $scope.onPage = function(favorite) {
+      var favoriteParams = {
+        id: favorite.id,
+        on_page: favorite.on_page
+      };
+      favorite.on_page = response.on_page;
+      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
+      });
+    };
 
+    $scope.trackFavorite = function(favorite) {
+      var favoriteParams = {
+        id: favorite.id,
+        tracking: favorite.tracking
+      };
+      favorite.tracking = !favorite.tracking;
+      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
+        console.log(response);
+      });
+    };
 
+    $scope.markFinished = function(favorite) {
+      var favoriteParams = {
+        id: favorite.id,
+        finished: favorite.finished
+      };
+      favorite.finished = true;
+      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response){
+        console.log(response);
+      });
+    };
 
+    window.scope = $scope;
   });
 })();

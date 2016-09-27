@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920235342) do
+ActiveRecord::Schema.define(version: 20160927001036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 20160920235342) do
   create_table "favorites", force: :cascade do |t|
     t.integer  "book_id"
     t.integer  "user_id"
-    t.boolean  "finished",   default: false
     t.integer  "rating"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.date     "deadline",   default: '2016-09-25'
     t.integer  "on_page"
-    t.boolean  "tracking",   default: false
     t.integer  "progress"
+    t.boolean  "tracking"
+    t.boolean  "finished"
   end
 
   create_table "goals", force: :cascade do |t|
