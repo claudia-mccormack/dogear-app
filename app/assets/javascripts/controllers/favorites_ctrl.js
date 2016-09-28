@@ -44,15 +44,15 @@
       });
     };
 
-    $scope.onPage = function(favorite) {
-      var favoriteParams = {
-        id: favorite.id,
-        on_page: favorite.on_page
-      };
-      favorite.on_page = response.on_page;
-      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
-      });
-    };
+    // $scope.onPage = function(favorite) {
+    //   var favoriteParams = {
+    //     id: favorite.id,
+    //     on_page: favorite.on_page
+    //   };
+    //   favorite.on_page = response.on_page;
+    //   $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response) {
+    //   });
+    // };
 
     $scope.trackFavorite = function(favorite) {
       var favoriteParams = {
@@ -66,12 +66,14 @@
     };
 
     $scope.markFinished = function(favorite) {
-      var favoriteParams = {
+      var favoriteParams2 = {
         id: favorite.id,
         finished: favorite.finished
       };
-      favorite.finished = true;
-      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams).success(function(response){
+      favorite.finished = !favorite.finished;
+      console.log(favorite);
+      $http.patch("/api/v1/favorites/"+favorite.id+".json", favoriteParams2).success(function(response){
+        console.log("IS IT FINISHED");
         console.log(response);
       });
     };

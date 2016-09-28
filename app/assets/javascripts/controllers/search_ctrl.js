@@ -34,5 +34,6 @@
         console.log($scope.books = response.data);
       });
     };
+
   });
 })();

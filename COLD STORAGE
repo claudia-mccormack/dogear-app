@@ -114,3 +114,9 @@ SLIMMED DOWN FAVORITES CONTROLLER
 #   end
 #   redirect_to "/"
 # end
+
+
+
+| filter: {finished: true}"
+ | filter: {tracking: false, finished:false}
+  | filter: {tracking: true, finished: false}

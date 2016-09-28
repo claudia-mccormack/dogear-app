@@ -1,12 +1,12 @@
-<div class="page-header page-header-with-icon">
-  <i class="fa fa-search"></i>
-
-  <h2>
-    Search
-    <small>Find New Books</small>
-  </h2>
-
-</div>
+<div id="main-content-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="title">Discover New Books</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div ng-app="app">
   <div ng-controller="searchCtrl">
@@ -24,7 +24,7 @@
 
               <!-- wrap content in 'box' div for controlling margins between them -->
               <div class="box">
-                <h3 class="title">Filter by Subject</h3>
+                <h3 class="title">Filter Books</h3>
 
                   <ul class="list-unstyled">
                     <li ng-repeat="subject in subjects"><input type="checkbox" ng-change="searchSubjects(subject, $index)" ng-model="subject.checked" ng-value="subject.name"> {{subject.name}} </li>
@@ -38,18 +38,25 @@
         <div class="container">
           <div class="row portfolio-boxes">
             <div ng-repeat="book in books">
-              <div class="col-md-4 portfolio-box portfolio-item">
+              <div class="col-md-6 portfolio-box portfolio-item">
                 <a href="/books/{{ book.id }}">
                  <div class="image-link">
-                  <img src="{{book.cover}}">
-                 </div>
+                  <img src="{{book.cover}}" height="300">
+                  <div class="hover-container">
+                    <div class-"inner">
                     <h3 class="title">{{book.title}}</h3>
-                    <h4 class="author">{{book.author_first}} {{book.author_last}}</h4>
+                    <h4 class="author">{{book.author}}</h4>
                   </a>
+                <button><%= link_to "Add To Favorites", "/favorites?book_id={{book.id}}", method: "post" %></button>
+                </div>
+                </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+
     </div>
   </div>
 </div>
