@@ -1,15 +1,26 @@
 <div class="container">
   <h1 class="text-contrast"><%= @book.title %></h1>
     <div>
-    <b><%= @book.author %></b><br>
-      <img src="<%= @book.cover %>" alt=""><br>
-      </div>
-    <div>
-      <p><%= @book.description %></p>
-    <% @book.subjects.each do |subject| %>
-      <p></p><%= link_to "#{subject.name}", "/subjects/#{subject.id}" %></p>
-      </div>
-    <% end %>
+      <h2><%= @book.author %></h2>
 
-  <div><%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %></div>
+<div class="row portfolio-boxes">
+  <div class="col-sm-6 portfolio-box portfolio-item">
+      <div class="image-link">
+        <img height="600" src="<%= @book.cover %>" alt="" class="big">
+      </div>
+  </div>
+  <div class="col-sm-5 portfolio-box portfolio-item">
+      <div>
+        <p><%= @book.description %></p>
+        <div>
+        <button><%= link_to "Add to Favorites", "/favorites?book_id=#{@book.id}&user_id=#{current_user.id}", method: "post"%></button>
+      </div>
+      <p>  </p>
+        <% @book.subjects.each do |subject| %>
+          <%= link_to "#{subject.name}", "/subjects/#{subject.id}" %>
+          </div>
+        <% end %>
+
+      </div>
+  </div>
 </div>
