@@ -29,7 +29,7 @@ require 'pry'
     @favorite = Favorite.find_by(id: params[:id])
     @favorite.update!(
       rating: params[:rating],
-      finished: params[:finished],
+      finished: true,
       on_page: params[:on_page],
       tracking: true
       )

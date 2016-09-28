@@ -9,9 +9,9 @@ json.tracking favorite.tracking
 json.progress favorite.progress
 
 json.cover favorite.book.cover
+json.cover_large favorite.book.cover_large
 json.title favorite.book.title
-json.author_first favorite.book.author_first
-json.author_last favorite.book.author_last
+json.author favorite.book.author
 
 
 

@@ -1,13 +1,14 @@
 <div class="container">
   <h1 class="text-contrast"><%= @book.title %></h1>
-    <b><%= @book.author_first %> <%= @book.author_last %></b><br>
+    <div>
+    <b><%= @book.author %></b><br>
       <img src="<%= @book.cover %>" alt=""><br>
-      <p><%= @book.isbn %></p>
+      </div>
+    <div>
       <p><%= @book.description %></p>
-      <p>Published in <%= @book.pub %></p>
-      <p><%= @book.pages %> pages</p>
     <% @book.subjects.each do |subject| %>
       <p></p><%= link_to "#{subject.name}", "/subjects/#{subject.id}" %></p>
+      </div>
     <% end %>
 
   <div><%= link_to "Add To Favorites", "/favorites?book_id=#{@book.id}", method: "post" %></div>

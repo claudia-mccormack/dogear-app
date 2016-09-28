@@ -16,7 +16,7 @@
       <div ng-repeat="favorite in favorites | filter: {tracking: true, finished: false}">
         <div class="col-md-4 portfolio-box portfolio-item">
             <a href="/books/{{ favorite.book_id }}">
-              <div class="image-link"><img src="{{ favorite.cover }}"></a>
+              <div class="image-link"><img src="{{ favorite.cover }}" height="300"></a>
               </div>
                 <h3 class="title">{{ favorite.title }}</h3>
                 <h4 class="author">{{ favorite.author_first }} {{ favorite.author_last }}</h4>
@@ -36,10 +36,10 @@
       <div ng-repeat="favorite in favorites | filter: {tracking: false, finished:false}">
         <div class="col-md-4 portfolio-box portfolio-item">
             <a href="/books/{{ favorite.book_id }}">
-              <div class="image-link"><img src="{{ favorite.cover }}"></a>
+              <div class="image-link"><img src="{{ favorite.cover }}" height="300"></a>
               </div>
                 <h3 class="title">{{ favorite.title }}</h3>
-                <h4 class="author">{{ favorite.author_first }} {{ favorite.author_last }}</h4>
+                <h4 class="author">{{ favorite.author }}</h4>
                 <div>
                   <button ng-class="{tracking: favorite.tracking}" ng-click="trackFavorite(favorite)">Reading Now</button>
                 </div>
@@ -51,14 +51,13 @@
 
     <div class="container">
       <h2>Books I've Finished!</h2>
-      <div ng-repeat="favorite in favorites | filter: {finished: true}">
+      <div ng-repeat="favorite in favorites| filter: {finished: true}">
         <div class="col-md-4 portfolio-box portfolio-item">
             <a href="/books/{{ favorite.book_id }}">
-              <div class="image-link"><img src="{{ favorite.cover }}"></a>
+              <div class="image-link"><img src="{{ favorite.cover }}" height="300"></a>
               </div>
                 <h3 class="title">{{ favorite.title }}</h3>
-                <h4 class="author">{{ favorite.author_first }} {{ favorite.author_last }}</h4>
-
+                <h4 class="author">{{ favorite.author }}</h4>
                 <i class="star-rating fa fa-lg" ng-repeat="star in favorite.stars" ng-click="rateFavorite(favorite, star)" ng-mouseover="fillStar(favorite, star)" ng-mouseleave="emptyStar(favorite, star)" ng-class="{'fa-star': star.filled, 'fa-star-o': !star.filled}" aria-hidden="true"></i>
         </div>
       </div>

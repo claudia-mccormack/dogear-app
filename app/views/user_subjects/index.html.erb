@@ -12,26 +12,25 @@
 <div id="main-content">
   <div class="container">
     <div class="row portfolio-boxes">
-      <% @recommendations.each do |rec| %>
-        <h2><%= rec[:subject] %></h2>
-        <h3>Average Rating: <%= rec[:ratings] %></h3>
-        <% @subj.books.each do |s| %>
-        <div class="col-md-3 portfolio-box portfolio-item">
-          <a href="/books/<%= s.id %>">
-           <div class="image-link">
-              <img src="<%= s.cover %>">
-                <div class="hover-container">
-                  <div class="inner">
-                    <h3 class="title"><%= s.title %></h3>
-                    <h4 class="author"><%= s.author_first %> <%= s.author_last %></h4>
-                  </a>
-                    <button><%= link_to "Add to Favorites", "/favorites?book_id=#{s.id}&user_id=#{current_user.id}", method: "post"%></button>
-                  </div>
+      <% @subject_hash.each do |name, array| %>
+        <h2><%= name %></h2>
+          <h3>Average Rating: <%= array[0] %></h3>
+            <% array[1].each do |book| %>
+              <div class="col-md-3 portfolio-box portfolio-item">
+                <a href="/books/<%= book.id %>">
+                 <div class="image-link">
+                    <img src="<%= book.cover %>" height="300">
+                      <div class="hover-container">
+                        <div class="inner">
+                          <h3 class="title"><%= book.title %></h3>
+                          <h4 class="author"><%= book.author %></h4>  </a>
+                        <button><%= link_to "Add to Favorites", "/favorites?book_id=#{book.id}&user_id=#{current_user.id}", method: "post"%></button>
+                       </div>
+                      </div>
                 </div>
-            </div>
         </div>
       <% end %>
-    
+
         </div>
       <% end %>
     </div>
