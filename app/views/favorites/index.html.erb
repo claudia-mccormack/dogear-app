@@ -12,7 +12,7 @@
 <div ng-app="app">
   <div ng-controller="favoritesCtrl" ng-init="setup()">
     <div class="container">
-      <h2>Books I'm Reading Now</h2>
+      <h2 class="subheading">Books I'm Reading Now</h2>
       <div ng-repeat="favorite in favorites | filter: {tracking: true, finished: false}">
         <div class="col-md-4 portfolio-box portfolio-item">
             <a href="/books/{{ favorite.book_id }}">
@@ -31,7 +31,7 @@
 
 
     <div class="container">
-      <h2>Favorites for Later</h2>
+      <h2 class="subheading">Favorites for Later</h2>
 
       <div ng-repeat="favorite in favorites | filter: {tracking: false, finished:false}">
         <div class="col-md-4 portfolio-box portfolio-item">
@@ -50,8 +50,8 @@
     </div>
 
     <div class="container">
-      <h2>Books I've Finished!</h2>
-      <div ng-repeat="favorite in favorites| filter: {finished: true}">
+      <h2 class="subheading">Books I've Finished!</h2>
+      <div ng-repeat="favorite in favorites| filter: {tracking: true, finished: true}">
         <div class="col-md-4 portfolio-box portfolio-item">
             <a href="/books/{{ favorite.book_id }}">
               <div class="image-link"><img src="{{ favorite.cover }}" height="300"></a>

@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-sm-12">
         <h1 class="title">Recomended Reading</h1>
+          <h3 class="subtitle">Browse Your Favorite Genres</h3>
       </div>
     </div>
   </div>
@@ -11,10 +12,12 @@
 
 <div id="main-content">
   <div class="container">
-    <div class="row portfolio-boxes">
+
       <% @subject_hash.each do |name, array| %>
-        <h2><%= name %></h2>
+      <div class="row portfolio-boxes">
+        <h2 class="subheading"><%= name %></h2>
           <h3>Average Rating: <%= array[0] %></h3>
+
             <% array[1].each do |book| %>
               <div class="col-md-3 portfolio-box portfolio-item">
                 <a href="/books/<%= book.id %>">
@@ -27,10 +30,10 @@
                         <button><%= link_to "Add to Favorites", "/favorites?book_id=#{book.id}&user_id=#{current_user.id}", method: "post"%></button>
                        </div>
                       </div>
-                </div>
-        </div>
-      <% end %>
+                 </div>
+              </div>
 
+            <% end %>
         </div>
       <% end %>
     </div>

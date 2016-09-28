@@ -11,18 +11,8 @@
 <div ng-app="app">
   <div ng-controller="searchCtrl">
     <div id="main-content">
-        <nav class="sidebar sidebar-fixed">
           <nav class="sidebar">
-            <button class="btn btn-block btn-contrast sidebar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <div class="sidebar-collapse collapse">
-              <!-- Collapsible sidebar content -->
-
-              <!-- wrap content in 'box' div for controlling margins between them -->
+            <div class="sidebar-sidebar-fixed" width="400">
               <div class="box">
                 <h3 class="title">Filter Books</h3>
 
@@ -33,12 +23,12 @@
               </div>
             </div>
           </nav>
-        </nav>
+
 
         <div class="container">
           <div class="row portfolio-boxes">
             <div ng-repeat="book in books">
-              <div class="col-md-6 portfolio-box portfolio-item">
+              <div class="col-md-4 portfolio-box portfolio-item">
                 <a href="/books/{{ book.id }}">
                  <div class="image-link">
                   <img src="{{book.cover}}" height="300">
@@ -48,8 +38,8 @@
                     <h4 class="author">{{book.author}}</h4>
                   </a>
                 <button><%= link_to "Add To Favorites", "/favorites?book_id={{book.id}}", method: "post" %></button>
-                </div>
-                </div>
+                  </div>
+                 </div>
                 </div>
               </div>
             </div>
